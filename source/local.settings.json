@@ -1,0 +1,9 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=hackathonsmartcity;AccountKey=TjCMLx3kT9is7I4mZsV5GFgbnjCURa3Ek0K5dj544wLkKTIpOItFZ7ZSsWxihvSiX8YQWxU1EtCA+AStSOQ8aQ==;EndpointSuffix=core.windows.net",
+    "FUNCTIONS_WORKER_RUNTIME": "java",
+    "nshackathonsmartcity_RootManageSharedAccessKey_EVENTHUB": "Endpoint=sb://ns-hackathon-smartcity.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=fGuIEpYBgqJ9CsiMZxFi/fThPZATi3C0q4SKLQm//DI=;EntityPath=vehicleloaddataevents",
+    "smartcitycosmosdb_DOCUMENTDB": "AccountEndpoint=https://smartcity-cosmosdb.documents.azure.com:443/;AccountKey=d1RYgaRQM2sKBhICPbPeAq4WnycXCj5z91MYHDqVvOuhDcGfYwbWzjlRmtOUNPavcyIsiCIJTk9iACDblg4ohA==;"
+  }
+}

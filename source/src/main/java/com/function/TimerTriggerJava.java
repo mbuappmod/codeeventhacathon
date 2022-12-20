@@ -56,7 +56,7 @@ public class TimerTriggerJava {
 
     @FunctionName("TimerTriggerJava")
     public void run(
-        @TimerTrigger(name = "timerInfo", schedule = "0 */2 * * * *") String timerInfo,
+        @TimerTrigger(name = "timerInfo", schedule = "0 */1 * * * *") String timerInfo,
         final ExecutionContext context
     ) {
         
@@ -106,47 +106,48 @@ public class TimerTriggerJava {
              map.put(deviceId,map.get(deviceId) + Integer.valueOf(v.getCount()));
            }
            else{
+              if(v.getCount()!=null && deviceId !=null)
              map.put(deviceId, Integer.valueOf(v.getCount()));
            }
            
             
-            System.out.println("the values ::" +v.getCount());
+            
         }
+        
         Iterator hmIterator = map.entrySet().iterator();
 
-        HashMap<Integer,Integer> returnMap = new HashMap();
+        HashMap<String,Integer> returnMap = new HashMap();
 
         while (hmIterator.hasNext()) {
- 
             Map.Entry mapElement
                 = (Map.Entry)hmIterator.next();
-            String  count = (String)mapElement.getValue();
-            if(Integer.parseInt(count) >50){
-                returnMap.put((Integer)mapElement.getKey(),120);
+            Integer  count = (Integer)mapElement.getValue();
+            System.out.println("the value of count is ::" +mapElement.getValue());
+            if(count.intValue() >50){
+                returnMap.put((String)mapElement.getKey(),120);
 
             }
-            else if(Integer.parseInt((String)mapElement.getValue()) <50 && Integer.parseInt((String)mapElement.getValue())> 30){
-                returnMap.put((Integer)mapElement.getKey(),60);
+            else if(count.intValue() <50 && count.intValue()> 30){
+                returnMap.put((String)mapElement.getKey(),60);
 
             }
-            else if(Integer.parseInt((String)mapElement.getValue()) <30){
-                returnMap.put((Integer)mapElement.getKey(),30);
+            else if(count.intValue() <30){
+                returnMap.put((String)mapElement.getKey(),30);
 
             }
             else{
-                returnMap.put((Integer)mapElement.getKey(),45);
+                returnMap.put((String)mapElement.getKey(),45);
             }
  
-            // Printing mark corresponding to string entries
-            System.out.println(mapElement.getKey() + " : "
-                               + mapElement.getValue());
+         
         }
+        
 
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
             String json = objectMapper.writeValueAsString(returnMap);
-            System.out.println(json);
+            System.out.println("output json is ::::  "  +json);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
